@@ -1,0 +1,24 @@
+{
+  "name": "Kalem — Sade Yazma Masası",
+  "short_name": "Kalem",
+  "description": "Yazarlar ve yazılım geliştiriciler için odaklanmayı artıran minimalist yazı editörü.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#15181d",
+  "theme-color": "#15181d",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

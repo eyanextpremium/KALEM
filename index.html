@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Kalem — Sade Yazma Masası</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#15181d">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="overlay" id="sidebarOverlay"></div>
+
+  <div class="spine" id="leftSpine">
+    <div class="brand">Kalem <small>MVP</small></div>
+    <div class="spine-track" id="spineTrack">
+      <div class="spine-line"></div>
+      <div class="spine-empty">Başlık yazınca burada bölüm haritan oluşur. Örn: <code># Giriş</code></div>
+    </div>
+    <div class="spine-footer">
+      <div class="goal-row">
+        Hedef: <input type="number" id="goalInput" value="1000" min="0" step="50"> kelime
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+  </div>
+
+  <div class="editor-wrap">
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <button class="menu-toggle left-toggle" id="toggleLeftSpine">☰ Bölümler</button>
+        <input class="doc-title" id="docTitle" value="Adsız belge" spellcheck="false">
+      </div>
+      
+      <div class="toolbar-actions">
+        <span class="save-indicator" id="saveIndicator">kaydedildi</span>
+        <div class="desktop-actions">
+          <button class="btn" id="exportMd">.md indir</button>
+          <button class="btn" id="exportTxt">.txt indir</button>
+          <button class="btn primary" id="exportPdf">PDF olarak yazdır</button>
+        </div>
+        <button class="menu-toggle right-toggle" id="toggleRightPanel">📊 İlerleme</button>
+      </div>
+    </div>
+    
+    <div class="editor-scroll">
+      <textarea id="editor" placeholder="Yazmaya başla...
+
+# ile başlık aç, ## ile alt başlık.
+Sol taraftaki omurga otomatik oluşur."></textarea>
+    </div>
+    
+    <div class="status-bar">
+      <span><b id="wordCount">0</b> kelime</span>
+      <span><b id="charCount">0</b> karakter</span>
+      <span><b id="readTime">0</b> dk okuma</span>
+      <span><b id="pctGoal">0%</b> hedef</span>
+    </div>
+  </div>
+
+  <div class="side-panel" id="rightPanel">
+    <h4>Bugünkü İlerleme</h4>
+    <div class="stat-row"><span>Kelime</span><span id="pWords">0</span></div>
+    <div class="stat-row"><span>Bölüm sayısı</span><span id="pSections">0</span></div>
+    <div class="stat-row"><span>Tahmini okuma</span><span id="pRead">0 dk</span></div>
+    <div class="stat-row"><span>Son kayıt</span><span id="pSaved">—</span></div>
+
+    <h4 style="margin-top:26px;">Dışa Aktar</h4>
+    <div class="export-list">
+      <button class="btn" id="exportMd2">Markdown (.md)</button>
+      <button class="btn" id="exportTxt2">Düz metin (.txt)</button>
+      <button class="btn primary" id="exportPdf2">PDF (yazdır)</button>
+    </div>
+
+    <div id="lockedNote" class="locked-note">
+      <b>Premium kilitli:</b> PDF/gelişmiş export şu an kilitli.
+      <div style="margin-top:8px;display:flex;gap:6px;">
+        <input id="licenseInput" placeholder="Lisans anahtarın" style="flex:1;background:var(--bg-panel-2);border:1px solid var(--border);color:var(--paper);border-radius:5px;padding:5px 8px;font-size:11px;">
+        <button class="btn" id="unlockBtn" style="padding:5px 10px;font-size:11px;">Aç</button>
+      </div>
+    </div>
+    <div id="unlockedNote" class="locked-note" style="display:none;border-color:var(--emerald-dim);">
+      <b style="color:var(--emerald);">✓ Premium aktif.</b> Tüm export özellikleri açık.
+    </div>
+  </div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
