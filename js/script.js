@@ -285,7 +285,7 @@ loadDraft();
 // GUMROAD STORE & DIRECT REDIRECT INTEGRATION
 // ======================================================
 
-const PREMIUM_STORE_URL = 'https://eyyupavci.gumroad.com/l/kalem'; // Senin Gumroad Kalem linkin
+const PREMIUM_STORE_URL = 'https://eyyupavci.gumroad.com/l/uzoxqz';
 
 // 1. Sağ paneldeki Gumroad satın alma butonunu yönlendirmeye bağlıyoruz
 const buyPremiumBtn = document.getElementById('buyPremiumBtn');
