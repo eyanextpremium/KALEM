@@ -214,7 +214,7 @@ async function verifyLicenseWithGumroad(key){
       method: 'POST',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
       body: new URLSearchParams({
-        product_id: GUMROAD_PRODUCT_ID,
+        product_permalink: 'uzoxqz', // Yeni kodun buraya da gelsin
         license_key: key.trim()
       })
     });
@@ -287,6 +287,12 @@ loadDraft();
 
 const PREMIUM_STORE_URL = 'https://eyyupavci.gumroad.com/l/uzoxqz';
 
+// ======================================================
+// GUMROAD STORE & DIRECT REDIRECT INTEGRATION
+// ======================================================
+
+const PREMIUM_STORE_URL = 'https://eyyupavci.gumroad.com/l/uzoxqz'; // Yeni ve Doğru Gumroad Kalem Linkin
+
 // 1. Sağ paneldeki Gumroad satın alma butonunu yönlendirmeye bağlıyoruz
 const buyPremiumBtn = document.getElementById('buyPremiumBtn');
 if (buyPremiumBtn) {
@@ -296,7 +302,6 @@ if (buyPremiumBtn) {
 }
 
 // 2. Mevcut exportPdf fonksiyonunu Gumroad yönlendirmesiyle güçlendiriyoruz
-// (Mevcut exportPdf fonksiyonunun üzerine yazacaktır)
 const originalExportPdf = exportPdf;
 exportPdf = function() {
   if (!isPremium()) {
@@ -312,7 +317,6 @@ exportPdf = function() {
     setTimeout(() => document.getElementById('licenseInput')?.focus(), 300);
     return;
   }
-  // Eğer zaten premiumsa asıl PDF yazdırma mantığını çalıştır
   originalExportPdf();
 };
 // --- PWA Service Worker Kaydı ---
