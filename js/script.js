@@ -281,11 +281,6 @@ const ePdf = document.getElementById('exportPdf'); if(ePdf) ePdf.addEventListene
 const ePdf2 = document.getElementById('exportPdf2'); if(ePdf2) ePdf2.addEventListener('click', exportPdf);
 
 loadDraft();
-// ======================================================
-// GUMROAD STORE & DIRECT REDIRECT INTEGRATION
-// ======================================================
-
-const PREMIUM_STORE_URL = 'https://eyyupavci.gumroad.com/l/uzoxqz';
 
 // ======================================================
 // GUMROAD STORE & DIRECT REDIRECT INTEGRATION
