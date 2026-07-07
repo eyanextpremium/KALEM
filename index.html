@@ -80,16 +80,21 @@ Sol taraftaki omurga otomatik oluşur."></textarea>
     </div>
 
     <div id="lockedNote" class="locked-note">
-      <b>Premium kilitli:</b> PDF/gelişmiş export şu an kilitli.
-      <div style="margin-top:8px;display:flex;gap:6px;">
-        <input id="licenseInput" placeholder="Lisans anahtarın" style="flex:1;background:var(--bg-panel-2);border:1px solid var(--border);color:var(--paper);border-radius:5px;padding:5px 8px;font-size:11px;">
-        <button class="btn" id="unlockBtn" style="padding:5px 10px;font-size:11px;">Aç</button>
+      <b>👑 Kalem Premium</b>
+      <p style="margin: 4px 0 10px 0; font-size: 11px; opacity: 0.8; line-height: 1.4;">
+        PDF yazdırma ve gelişmiş dışa aktarma özellikleri Premium sürümde geçerlidir.
+      </p>
+      
+      <!-- Doğrudan senin Gumroad mağazana yönlendiren buton -->
+      <button class="btn primary" id="buyPremiumBtn" style="width: 100%; margin-bottom: 12px; font-size: 12px; padding: 6px 0;">
+        👑 Premium Satın Al (Gumroad)
+      </button>
+
+      <div style="border-top: 1px solid var(--border); padding-top: 10px; display:flex; gap:6px; align-items: center;">
+        <input id="licenseInput" placeholder="Lisans anahtarını girin" style="flex:1; background:var(--bg-panel-2); border:1px solid var(--border); color:var(--paper); border-radius:5px; padding:6px 8px; font-size:11px;">
+        <button class="btn" id="unlockBtn" style="padding:6px 10px; font-size:11px; white-space: nowrap;">Lisansı Doğrula</button>
       </div>
     </div>
-    <div id="unlockedNote" class="locked-note" style="display:none;border-color:var(--emerald-dim);">
-      <b style="color:var(--emerald);">✓ Premium aktif.</b> Tüm export özellikleri açık.
-    </div>
-  </div>
 
 <script src="js/script.js"></script>
 </body>

@@ -281,7 +281,40 @@ const ePdf = document.getElementById('exportPdf'); if(ePdf) ePdf.addEventListene
 const ePdf2 = document.getElementById('exportPdf2'); if(ePdf2) ePdf2.addEventListener('click', exportPdf);
 
 loadDraft();
+// ======================================================
+// GUMROAD STORE & DIRECT REDIRECT INTEGRATION
+// ======================================================
 
+const PREMIUM_STORE_URL = 'https://eyyupavci.gumroad.com/l/kalem'; // Senin Gumroad Kalem linkin
+
+// 1. Sağ paneldeki Gumroad satın alma butonunu yönlendirmeye bağlıyoruz
+const buyPremiumBtn = document.getElementById('buyPremiumBtn');
+if (buyPremiumBtn) {
+  buyPremiumBtn.addEventListener('click', () => {
+    window.open(PREMIUM_STORE_URL, '_blank');
+  });
+}
+
+// 2. Mevcut exportPdf fonksiyonunu Gumroad yönlendirmesiyle güçlendiriyoruz
+// (Mevcut exportPdf fonksiyonunun üzerine yazacaktır)
+const originalExportPdf = exportPdf;
+exportPdf = function() {
+  if (!isPremium()) {
+    alert('PDF olarak dışa aktarma Kalem Premium sürümüne özeldir. Satın alma sayfasına yönlendiriliyorsunuz.');
+    window.open(PREMIUM_STORE_URL, '_blank');
+    
+    // Sağ paneli otomatik açarak lisans alanını kullanıcıya gösterelim
+    if (rightPanel) {
+      rightPanel.classList.add('open');
+      sidebarOverlay?.classList.add('active');
+    }
+    // Lisans kutusuna odaklan (Focus)
+    setTimeout(() => document.getElementById('licenseInput')?.focus(), 300);
+    return;
+  }
+  // Eğer zaten premiumsa asıl PDF yazdırma mantığını çalıştır
+  originalExportPdf();
+};
 // --- PWA Service Worker Kaydı ---
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
