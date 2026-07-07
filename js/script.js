@@ -283,42 +283,42 @@ const ePdf2 = document.getElementById('exportPdf2'); if(ePdf2) ePdf2.addEventLis
 loadDraft();
 
 // ======================================================
-// GUMROAD STORE & DIRECT REDIRECT INTEGRATION
+// GUMROAD INTEGRATION - FINAL SAFE VERSION
 // ======================================================
+window.addEventListener('load', () => {
+  const GUMROAD_LINK_FINAL = 'https://eyyupavci.gumroad.com/l/uzoxqz';
 
-const PREMIUM_STORE_URL = 'https://eyyupavci.gumroad.com/l/uzoxqz'; // Yeni ve Doğru Gumroad Kalem Linkin
-
-// 1. Sağ paneldeki Gumroad satın alma butonunu yönlendirmeye bağlıyoruz
-const buyPremiumBtn = document.getElementById('buyPremiumBtn');
-if (buyPremiumBtn) {
-  buyPremiumBtn.addEventListener('click', () => {
-    window.open(PREMIUM_STORE_URL, '_blank');
-  });
-}
-
-// 2. Mevcut exportPdf fonksiyonunu Gumroad yönlendirmesiyle güçlendiriyoruz
-const originalExportPdf = exportPdf;
-exportPdf = function() {
-  if (!isPremium()) {
-    alert('PDF olarak dışa aktarma Kalem Premium sürümüne özeldir. Satın alma sayfasına yönlendiriliyorsunuz.');
-    window.open(PREMIUM_STORE_URL, '_blank');
-    
-    // Sağ paneli otomatik açarak lisans alanını kullanıcıya gösterelim
-    if (rightPanel) {
-      rightPanel.classList.add('open');
-      sidebarOverlay?.classList.add('active');
-    }
-    // Lisans kutusuna odaklan (Focus)
-    setTimeout(() => document.getElementById('licenseInput')?.focus(), 300);
-    return;
+  // 1. Sağ paneldeki Gumroad butonunu bağla
+  const buyPremiumBtn = document.getElementById('buyPremiumBtn');
+  if (buyPremiumBtn) {
+    buyPremiumBtn.onclick = (e) => {
+      e.preventDefault();
+      window.open(GUMROAD_LINK_FINAL, '_blank');
+    };
   }
-  originalExportPdf();
-};
-// --- PWA Service Worker Kaydı ---
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(reg => console.log('Service Worker başarıyla kaydedildi:', reg.scope))
-      .catch(err => console.log('Service Worker kaydı başarısız:', err));
-  });
-}
+
+  // 2. PDF butonlarını güvenle yakala ve premium kontrolü ekle
+  const pdfBtn1 = document.getElementById('exportPdf');
+  const pdfBtn2 = document.getElementById('exportPdf2');
+
+  const handlePdfClick = (e) => {
+    if (typeof isPremium === 'function' && !isPremium()) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      
+      alert('PDF olarak dışa aktarma Kalem Premium sürümüne özeldir. Satın alma sayfasına yönlendiriliyorsunuz.');
+      window.open(GUMROAD_LINK_FINAL, '_blank');
+      
+      const rPanel = document.getElementById('rightPanel');
+      const sOverlay = document.getElementById('sidebarOverlay');
+      if (rPanel) {
+        rPanel.classList.add('open');
+        sOverlay?.classList.add('active');
+      }
+      setTimeout(() => document.getElementById('licenseInput')?.focus(), 300);
+    }
+  };
+
+  if (pdfBtn1) pdfBtn1.addEventListener('click', handlePdfClick, true);
+  if (pdfBtn2) pdfBtn2.addEventListener('click', handlePdfClick, true);
+});
