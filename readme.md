@@ -2,6 +2,14 @@
 
 Yazarlar ve içerik üreticileri için tasarlanmış, odaklanmayı en üst düzeye çıkaran minimalist, "Quiet Luxury" estetiğine sahip dijital yazı masası.
 
+---
+
+### 🚀 Premium Desktop Version & Support
+If you want to unlock advanced export features and try the lifetime licensed premium desktop version to support an indie developer, check out our official page:
+👉 **[Click here to get Premium Desktop Version](https://eyanextpremium.github.io/KALEM/)**
+
+---
+
 ## ✨ Özellikler
 - **Bölüm Haritası (Spine):** Yazı içerisindeki `#`, `##` başlıklarını otomatik algılayarak dinamik bir içerik haritası sunar.
 - **Hedef Takibi:** Günlük kelime hedefi belirleme ve ilerleme çubuğu.
